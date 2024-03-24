@@ -1,6 +1,20 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
 @import-normalize;
 
+:root {
+  --white-color: #FBFBFB;
+  --background-color: rgb(200, 193, 193);
+  --blue-color: #3470FF;
+  --blue-hover-color: #255EE8;
+  --primary-text-color: #191A15;
+  --gray-color: #8A8A89;
+}
+
 body {
+  height: 100vh;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -20,6 +34,10 @@ code {
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Inter", sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -27,17 +45,27 @@ h4,
 h5,
 h6,
 p {
-   margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 ul,
 ol {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 img {
-   display: block;
-   max-width: 100%;
-   height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
