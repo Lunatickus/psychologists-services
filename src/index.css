@@ -5,6 +5,7 @@
 @import-normalize;
 
 :root {
+  --primary-white-color: #FFFFFF;
   --white-color: #FBFBFB;
   --background-color: rgb(200, 193, 193);
   --blue-color: #3470FF;
@@ -36,6 +37,7 @@ code {
 
 body {
   font-family: "Inter", sans-serif;
+  background-color: var(--white-color);
 }
 
 h1,

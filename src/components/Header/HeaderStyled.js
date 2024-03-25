@@ -53,6 +53,11 @@ export const HeaderStyled = styled.header`
     background-color: transparent;
   }
 
+  .header-log-in-button:hover {
+    background-color: var(--blue-hover-color);
+    color: var(--white-color);
+  }
+
   .header-registration-button {
     padding: 14px 40px 14px 40px;
     border-radius: 30px;
@@ -63,6 +68,10 @@ export const HeaderStyled = styled.header`
     line-height: 1.25;
     letter-spacing: -1%;
     border-color: transparent;
+  }
+
+  .header-registration-button:hover {
+    background-color: var(--blue-hover-color);
   }
 `;
 
