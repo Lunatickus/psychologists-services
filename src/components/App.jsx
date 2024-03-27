@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -12,6 +12,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/psychologists" element={<PsychologistsPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
   );

@@ -7,7 +7,7 @@ import {
   NavLinkStyledPsychologists,
 } from "./HeaderStyled";
 
-export const Header = () => {
+export const Header = ({ openRegisterModal, openLogInModal }) => {
   return (
     <HeaderStyled>
       <Container>
@@ -36,10 +36,18 @@ export const Header = () => {
             </ul>
           </nav>
           <div className="header-button-wrapper">
-            <button type="button" className="header-log-in-button">
+            <button
+              type="button"
+              className="header-log-in-button"
+              onClick={openLogInModal}
+            >
               Log In
             </button>
-            <button type="button" className="header-registration-button">
+            <button
+              type="button"
+              className="header-registration-button"
+              onClick={openRegisterModal}
+            >
               Registration
             </button>
           </div>
