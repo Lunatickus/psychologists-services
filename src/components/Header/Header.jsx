@@ -6,8 +6,13 @@ import {
   NavLinkStyledHome,
   NavLinkStyledPsychologists,
 } from "./HeaderStyled";
+import { useSelector } from "react-redux";
+import { selectUserIsLoggedIn } from "../../redux/auth/auth.selectors";
+import { UserMenu } from "../UserMenu/UserMenu";
 
 export const Header = ({ openRegisterModal, openLogInModal }) => {
+  const isLoggedIn = useSelector(selectUserIsLoggedIn);
+
   return (
     <HeaderStyled>
       <Container>
@@ -28,29 +33,35 @@ export const Header = ({ openRegisterModal, openLogInModal }) => {
                   Psychologists
                 </NavLinkStyledPsychologists>
               </li>
-              <li>
-                <NavLinkStyledFavorites to="/favorites">
-                  Favorites
-                </NavLinkStyledFavorites>
-              </li>
+              {isLoggedIn && (
+                <li>
+                  <NavLinkStyledFavorites to="/favorites">
+                    Favorites
+                  </NavLinkStyledFavorites>
+                </li>
+              )}
             </ul>
           </nav>
-          <div className="header-button-wrapper">
-            <button
-              type="button"
-              className="header-log-in-button"
-              onClick={openLogInModal}
-            >
-              Log In
-            </button>
-            <button
-              type="button"
-              className="header-registration-button"
-              onClick={openRegisterModal}
-            >
-              Registration
-            </button>
-          </div>
+          {isLoggedIn ? (
+            <UserMenu />
+          ) : (
+            <div className="header-button-wrapper">
+              <button
+                type="button"
+                className="header-log-in-button"
+                onClick={openLogInModal}
+              >
+                Log In
+              </button>
+              <button
+                type="button"
+                className="header-registration-button"
+                onClick={openRegisterModal}
+              >
+                Registration
+              </button>
+            </div>
+          )}
         </div>
       </Container>
     </HeaderStyled>

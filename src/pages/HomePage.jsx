@@ -7,10 +7,14 @@ import { useState } from "react";
 import { Modal } from "../components/Modal/Modal";
 import { RegistrationForm } from "../components/RegistrationForm/RegistrationForm";
 import { LogInForm } from "../components/LogInForm/LogInForm";
+import { useSelector } from "react-redux";
+import { selectUserIsLoading } from "../redux/auth/auth.selectors";
+import { Loader } from "../components/Loader/Loader";
 
 const HomePage = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
+  const isLoading = useSelector(selectUserIsLoading);
 
   return (
     <>
@@ -63,6 +67,7 @@ const HomePage = () => {
           <LogInForm closeModal={() => setIsLogInModalOpen(false)} />
         </Modal>
       )}
+      {isLoading && <Loader />}
     </>
   );
 };

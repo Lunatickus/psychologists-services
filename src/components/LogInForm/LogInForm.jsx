@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ReactComponent as Eye } from "../../icons/eye.svg";
 import { ReactComponent as EyeOff } from "../../icons/eye-off.svg";
 import { FormStyled, TextStyled, TitleStyled } from "./LogIn.styled";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/authOperations";
 
 const schema = yup.object().shape({
   email: yup
@@ -18,9 +20,10 @@ const schema = yup.object().shape({
 
 export const LogInForm = ({ closeModal }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    dispatch(logIn(values));
     closeModal();
     resetForm();
   };

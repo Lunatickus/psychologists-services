@@ -4,6 +4,8 @@ import { FormStyled, TextStyled, TitleStyled } from "./RegistrationForm.styled";
 import { useState } from "react";
 import { ReactComponent as Eye } from "../../icons/eye.svg";
 import { ReactComponent as EyeOff } from "../../icons/eye-off.svg";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/authOperations";
 
 const schema = yup.object().shape({
   name: yup
@@ -25,10 +27,11 @@ const schema = yup.object().shape({
 
 export const RegistrationForm = ({ closeModal }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     closeModal();
+    dispatch(register(values))
     resetForm();
   };
 
