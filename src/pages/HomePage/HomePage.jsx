@@ -1,15 +1,15 @@
-import { Container } from "../components/Container/Container";
-import { Header } from "../components/Header/Header";
+import { Container } from "../../components/Container/Container";
+import { Header } from "../../components/Header/Header";
 import { Background, LinkStyled } from "./HomePage.styled";
-import { ReactComponent as Arrow } from "../icons/arrow.svg";
-import { ReactComponent as Checkbox } from "../icons/checkbox.svg";
+import { ReactComponent as Arrow } from "../../icons/arrow.svg";
+import { ReactComponent as Checkbox } from "../../icons/checkbox.svg";
 import { useState } from "react";
-import { Modal } from "../components/Modal/Modal";
-import { RegistrationForm } from "../components/RegistrationForm/RegistrationForm";
-import { LogInForm } from "../components/LogInForm/LogInForm";
+import { Modal } from "../../components/Modal/Modal";
+import { RegistrationForm } from "../../components/RegistrationForm/RegistrationForm";
+import { LogInForm } from "../../components/LogInForm/LogInForm";
 import { useSelector } from "react-redux";
-import { selectUserIsLoading } from "../redux/auth/auth.selectors";
-import { Loader } from "../components/Loader/Loader";
+import { selectUserIsLoading } from "../../redux/auth/auth.selectors";
+import { Loader } from "../../components/Loader/Loader";
 
 const HomePage = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);

@@ -2,8 +2,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import PrivateRoute from "./Routes/PrivateRoute";
 
-const HomePage = lazy(() => import("../pages/HomePage"));
-const PsychologistsPage = lazy(() => import("../pages/PsychologistsPage"));
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const PsychologistsPage = lazy(() => import("../pages/PsychologistsPage/PsychologistsPage"));
 const FavoritesPage = lazy(() => import("../pages/FavoritesPage"));
 
 function App() {
