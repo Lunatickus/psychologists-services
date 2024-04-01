@@ -7,11 +7,13 @@ export const TextStyled = styled.p`
   line-height: 1.29;
   letter-spacing: 0%;
   margin-bottom: 8px;
+  align-self: flex-start;
 `;
 
 export const FilterStyled = styled.div`
   position: relative;
   margin-bottom: 32px;
+  align-self: flex-start;
 
   .filter-title {
     display: flex;
@@ -56,9 +58,5 @@ export const FilterStyled = styled.div`
   .filter-option {
     padding-top: 4px;
     padding-bottom: 4px;
-  }
-
-  .filter-option:first-child {
-    color: var(--primary-text-color);
   }
 `;

@@ -1,14 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FilterStyled, TextStyled } from "./Filter.styled";
 import { ReactComponent as ArrowUp } from "../../icons/chevron-up.svg";
 import { ReactComponent as ArrowDown } from "../../icons/chevron-down.svg";
 import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  fetchAllPsychologists,
+  fetchPsychologistsFirstThree,
+  fetchPsychologistsFirstThreeReverse,
+} from "../../redux/psychologists/psychologistsOperations";
 
 export const Filter = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filterValue, setFilterValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = searchParams.get("filter");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchPsychologistsByFilter = (str) => {
+      if (
+        str === "A to Z" ||
+        str === "Less than 10$" ||
+        str === "Not popular"
+      ) {
+        dispatch(fetchPsychologistsFirstThree(str));
+      } else if (
+        str === "Z to A" ||
+        str === "Greater than 10$" ||
+        str === "Popular"
+      ) {
+        dispatch(fetchPsychologistsFirstThreeReverse(str));
+      } else if (str === "Show all") {
+        dispatch(fetchAllPsychologists());
+      } else {
+        dispatch(fetchPsychologistsFirstThree("A to Z"));
+      }
+    };
+
+    setFilterValue(filter);
+    fetchPsychologistsByFilter(filter);
+  }, [dispatch, filter]);
 
   const handleChangeFilter = (e) => {
     setIsFilterOpen(!isFilterOpen);
@@ -39,11 +71,11 @@ export const Filter = () => {
             <option className="filter-option" value="Z to A">
               Z to A
             </option>
-            <option className="filter-option" value="Cheap">
-              Cheap
+            <option className="filter-option" value="Less than 10$">
+              Less than 10$
             </option>
-            <option className="filter-option" value="Expensive">
-              Expensive
+            <option className="filter-option" value="Greater than 10$">
+              Greater than 10$
             </option>
             <option className="filter-option" value="Popular">
               Popular
