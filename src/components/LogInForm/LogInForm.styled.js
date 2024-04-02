@@ -69,6 +69,7 @@ export const FormStyled = styled.form`
     border-radius: 30px;
     background-color: var(--blue-color);
     border: none;
+    transition: 250ms linear;
   }
 
   .form-submit:hover {

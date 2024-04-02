@@ -13,7 +13,7 @@ export const Backdrop = styled.div`
   .modal {
     position: absolute;
     max-height: 580px;
-
+    max-width: 566px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

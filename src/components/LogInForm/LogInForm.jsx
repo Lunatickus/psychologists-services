@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useState } from "react";
 import { ReactComponent as Eye } from "../../icons/eye.svg";
 import { ReactComponent as EyeOff } from "../../icons/eye-off.svg";
-import { FormStyled, TextStyled, TitleStyled } from "./LogIn.styled";
+import { FormStyled, TextStyled, TitleStyled } from "./LogInForm.styled";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/authOperations";
 

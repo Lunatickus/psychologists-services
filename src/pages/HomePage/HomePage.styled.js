@@ -103,6 +103,7 @@ export const LinkStyled = styled(Link)`
   padding: 18px 50px 18px 50px;
   border-radius: 30px;
   background-color: var(--blue-color);
+  transition: 250ms linear;
 
   &:hover {
     background-color: var(--blue-hover-color);

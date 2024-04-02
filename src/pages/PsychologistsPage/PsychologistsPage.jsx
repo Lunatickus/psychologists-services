@@ -10,7 +10,10 @@ import { LogInForm } from "../../components/LogInForm/LogInForm";
 import { Modal } from "../../components/Modal/Modal";
 import { RegistrationForm } from "../../components/RegistrationForm/RegistrationForm";
 import { LoadMoreButton } from "../../components/LoadMoreButton/LoadMoreButton";
-import { selectPsychologistsIsLoading, selectPsychologistsItems } from "../../redux/psychologists/psychologists.selector";
+import {
+  selectPsychologistsIsLoading,
+  selectPsychologistsItems,
+} from "../../redux/psychologists/psychologists.selector";
 import { PsychologistsList } from "../../components/PsychologistsList/PsychologistsList";
 
 const PsychologistsPage = () => {
@@ -45,7 +48,7 @@ const PsychologistsPage = () => {
           <LogInForm closeModal={() => setIsLogInModalOpen(false)} />
         </Modal>
       )}
-      {isUserLoading || isPsychologistsIsLoading && <Loader />}
+      {isUserLoading || (isPsychologistsIsLoading && <Loader />)}
     </>
   );
 };

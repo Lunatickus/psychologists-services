@@ -10,6 +10,7 @@ export const ButtonStyled = styled.button`
   line-height: 1.25;
   letter-spacing: -1%;
   border: none;
+  transition: 250ms linear;
 
   &:hover {
     background-color: var(--blue-hover-color);

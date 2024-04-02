@@ -13,16 +13,16 @@ export const Modal = ({ children, closeModal }) => {
 
       closeModal();
     }
-    document.body.style.overflow = 'hidden';
-    const paddingOffSet = window.innerWidth - document.body.offsetWidth + 'px';
+    document.body.style.overflow = "hidden";
+    const paddingOffSet = window.innerWidth - document.body.offsetWidth + "px";
 
     document.body.style.paddingRight = paddingOffSet;
     window.addEventListener("keydown", onEsc);
 
     return () => {
       window.removeEventListener("keydown", onEsc);
-      document.body.style.overflow = 'auto';
-      document.body.style.paddingRight = '0px';
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
     };
   }, [closeModal]);
 

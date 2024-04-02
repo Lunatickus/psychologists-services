@@ -37,6 +37,7 @@ export const FilterStyled = styled.div`
 
   .filter-select {
     position: absolute;
+    z-index: 2;
     top: 56px;
     width: 226px;
     outline: none;

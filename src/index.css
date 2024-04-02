@@ -37,7 +37,7 @@ code {
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: var(--white-color);
+  background-color: rgb(243, 243, 243);
 }
 
 h1,

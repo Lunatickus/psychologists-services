@@ -51,6 +51,7 @@ export const HeaderStyled = styled.header`
     letter-spacing: -1%;
     color: var(--primary-text-color);
     background-color: transparent;
+    transition: 250ms linear;
   }
 
   .header-log-in-button:hover {
@@ -68,6 +69,7 @@ export const HeaderStyled = styled.header`
     line-height: 1.25;
     letter-spacing: -1%;
     border-color: transparent;
+    transition: 250ms linear;
   }
 
   .header-registration-button:hover {
