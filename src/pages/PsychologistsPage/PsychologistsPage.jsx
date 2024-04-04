@@ -48,7 +48,8 @@ const PsychologistsPage = () => {
           <LogInForm closeModal={() => setIsLogInModalOpen(false)} />
         </Modal>
       )}
-      {isUserLoading || (isPsychologistsIsLoading && <Loader />)}
+      {isUserLoading && <Loader />}
+      {isPsychologistsIsLoading && <Loader />}
     </>
   );
 };

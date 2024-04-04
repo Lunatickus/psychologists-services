@@ -61,10 +61,6 @@ export const getDataByFilterFirstThree = async (filter) => {
     const snapshots = await get(ordered);
     const psychologists = Object.values(snapshots.val());
     return psychologists;
-    // const snapshots = await get(dbRef);
-    // const ordered = sortByKey(snapshots.val(), req);
-    // const resp = [...ordered].slice(0, 3);
-    // return resp;
   } catch (error) {
     console.log(error);
     throw error;
@@ -93,10 +89,6 @@ export const getDataByFilterFirstThreeReverse = async (filter) => {
     const psychologists = Object.values(snapshots.val());
     const resp = [...psychologists].reverse();
     return resp;
-    // const snapshots = await get(dbRef);
-    // const ordered = sortByKey(snapshots.val(), req);
-    // const resp = [...ordered].reverse().slice(0, 3);
-    // return resp;
   } catch (error) {
     console.log(error);
     throw error;

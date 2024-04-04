@@ -7,6 +7,10 @@ import { ReviewsList } from "../ReviewsList/ReviewsList";
 import { useEffect, useState } from "react";
 import { STORAGE_KEY } from "../../services/keys";
 import { Modal } from "../Modal/Modal";
+import { useSelector } from "react-redux";
+import { selectUserIsLoggedIn } from "../../redux/auth/auth.selectors";
+import { toastError } from "../../services/toastNotifications";
+import { AppointmentForm } from "../AppointmentForm/AppointmentForm";
 
 export const PsychologistsListItem = ({ psychologist }) => {
   const {
@@ -28,6 +32,16 @@ export const PsychologistsListItem = ({ psychologist }) => {
     return JSON.parse(window.localStorage.getItem(STORAGE_KEY)) ?? [];
   });
   const isFavorite = favorites.some((fav) => fav.name === name);
+  const isLoggedIn = useSelector(selectUserIsLoggedIn);
+
+  const openModal = () => {
+    if (!isLoggedIn) {
+      toastError("You must be logged in");
+      return;
+    }
+
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
@@ -115,14 +129,18 @@ export const PsychologistsListItem = ({ psychologist }) => {
             <button
               type="button"
               className="item-appointment-btn"
-              onClick={() => setIsModalOpen(true)}
+              onClick={openModal}
             >
               Make an appointment
             </button>
           </>
         )}
       </div>
-      {isModalOpen && <Modal closeModal={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <Modal closeModal={() => setIsModalOpen(false)}>
+          <AppointmentForm name={name} avatar={avatar_url} closeModal={() => setIsModalOpen(false)} />
+        </Modal>
+      )}
     </ItemStyled>
   );
 };
