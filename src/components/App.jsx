@@ -4,7 +4,7 @@ import PrivateRoute from "./Routes/PrivateRoute";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const PsychologistsPage = lazy(() => import("../pages/PsychologistsPage/PsychologistsPage"));
-const FavoritesPage = lazy(() => import("../pages/FavoritesPage"));
+const FavoritesPage = lazy(() => import("../pages/FavoritesPage/FavoritesPage"));
 
 function App() {
   return (

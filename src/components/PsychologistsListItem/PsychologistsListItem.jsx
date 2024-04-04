@@ -5,14 +5,13 @@ import { ReactComponent as PaintedHeart } from "../../icons/painted-heart.svg";
 import { ItemStyled } from "./PsychologistsListItem.styled";
 import { ReviewsList } from "../ReviewsList/ReviewsList";
 import { useEffect, useState } from "react";
-import { STORAGE_KEY } from "../../services/keys";
 import { Modal } from "../Modal/Modal";
 import { useSelector } from "react-redux";
 import { selectUserIsLoggedIn } from "../../redux/auth/auth.selectors";
 import { toastError } from "../../services/toastNotifications";
 import { AppointmentForm } from "../AppointmentForm/AppointmentForm";
 
-export const PsychologistsListItem = ({ psychologist }) => {
+export const PsychologistsListItem = ({ psychologist, addRemoveFavorite, favorites }) => {
   const {
     name,
     about,
@@ -28,11 +27,12 @@ export const PsychologistsListItem = ({ psychologist }) => {
 
   const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [favorites, setFavorites] = useState(() => {
-    return JSON.parse(window.localStorage.getItem(STORAGE_KEY)) ?? [];
-  });
-  const isFavorite = favorites.some((fav) => fav.name === name);
   const isLoggedIn = useSelector(selectUserIsLoggedIn);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    setIsFavorite(favorites.some((fav) => fav.name === name));
+  },  [favorites, name])
 
   const openModal = () => {
     if (!isLoggedIn) {
@@ -41,22 +41,6 @@ export const PsychologistsListItem = ({ psychologist }) => {
     }
 
     setIsModalOpen(true);
-  };
-
-  useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-  }, [favorites]);
-
-  const handleAdRemoveFavorites = (item) => {
-    if (favorites.some((favorite) => favorite.name === item.name)) {
-      const filtered = favorites.filter(
-        (favorite) => favorite.name !== item.name
-      );
-      setFavorites([...filtered]);
-      return;
-    }
-
-    setFavorites((prevState) => [...prevState, item]);
   };
 
   return (
@@ -87,7 +71,7 @@ export const PsychologistsListItem = ({ psychologist }) => {
             <button
               type="button"
               className="item-head-favorite-btn"
-              onClick={() => handleAdRemoveFavorites(psychologist)}
+              onClick={() => addRemoveFavorite(psychologist)}
             >
               {isFavorite ? <PaintedHeart /> : <UnpaintedHeart />}
             </button>

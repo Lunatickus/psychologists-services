@@ -8,7 +8,7 @@ import {
 } from "firebase/database";
 import { db } from "./firebase";
 
-const filterDefinition = (str) => {
+export const filterDefinition = (str) => {
   switch (str) {
     case "A to Z":
       return "name";
@@ -27,7 +27,7 @@ const filterDefinition = (str) => {
   }
 };
 
-function sortByKey(array, key) {
+export function sortByKey(array, key) {
   return [...array].sort((a, b) => {
     const valueA = typeof a[key] === "string" ? a[key].toLowerCase() : a[key];
     const valueB = typeof b[key] === "string" ? b[key].toLowerCase() : b[key];

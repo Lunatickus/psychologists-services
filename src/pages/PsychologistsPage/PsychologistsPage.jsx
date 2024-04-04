@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "../../components/Container/Container";
 import { Filter } from "../../components/Filter/Filter";
 import { Header } from "../../components/Header/Header";
@@ -15,6 +15,7 @@ import {
   selectPsychologistsItems,
 } from "../../redux/psychologists/psychologists.selector";
 import { PsychologistsList } from "../../components/PsychologistsList/PsychologistsList";
+import { STORAGE_KEY } from "../../services/keys";
 
 const PsychologistsPage = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -22,6 +23,25 @@ const PsychologistsPage = () => {
   const isUserLoading = useSelector(selectUserIsLoading);
   const isPsychologistsIsLoading = useSelector(selectPsychologistsIsLoading);
   const psychologists = useSelector(selectPsychologistsItems);
+  const [favorites, setFavorites] = useState(() => {
+    return JSON.parse(window.localStorage.getItem(STORAGE_KEY)) ?? [];
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+  }, [favorites]);
+
+  const handleAdRemoveFavorites = (item) => {
+    if (favorites.some((favorite) => favorite.name === item.name)) {
+      const filtered = favorites.filter(
+        (favorite) => favorite.name !== item.name
+      );
+      setFavorites([...filtered]);
+      return;
+    }
+
+    setFavorites((prevState) => [...prevState, item]);
+  };
 
   return (
     <>
@@ -33,7 +53,7 @@ const PsychologistsPage = () => {
         <Container>
           <SectionStyled>
             <Filter />
-            <PsychologistsList psychologists={psychologists} />
+            <PsychologistsList psychologists={psychologists} addRemoveFavorite={handleAdRemoveFavorites} favorites={favorites} />
             {psychologists.length <= 3 && <LoadMoreButton />}
           </SectionStyled>
         </Container>

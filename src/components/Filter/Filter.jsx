@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FilterStyled, TextStyled } from "./Filter.styled";
 import { ReactComponent as ArrowUp } from "../../icons/chevron-up.svg";
 import { ReactComponent as ArrowDown } from "../../icons/chevron-down.svg";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   fetchAllPsychologists,
@@ -16,8 +16,13 @@ export const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = searchParams.get("filter");
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
+    if (pathname !== "/psychologists") {
+      return;
+    }
+
     const fetchPsychologistsByFilter = (str) => {
       if (
         str === "A to Z" ||
@@ -32,7 +37,7 @@ export const Filter = () => {
       ) {
         dispatch(fetchPsychologistsFirstThreeReverse(str));
       } else if (str === "Show all") {
-        dispatch(fetchAllPsychologists());
+        pathname === "/psychologists" && dispatch(fetchAllPsychologists());
       } else {
         dispatch(fetchPsychologistsFirstThree("A to Z"));
       }
@@ -40,7 +45,7 @@ export const Filter = () => {
 
     setFilterValue(filter);
     fetchPsychologistsByFilter(filter);
-  }, [dispatch, filter]);
+  }, [dispatch, filter, pathname]);
 
   const handleChangeFilter = (e) => {
     setIsFilterOpen(!isFilterOpen);

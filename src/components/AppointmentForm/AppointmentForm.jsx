@@ -40,7 +40,6 @@ export const AppointmentForm = ({ name, avatar, closeModal }) => {
   const handleSubmit = (values, { resetForm }) => {
     closeModal();
     toastSuccess(`Your appointment at ${values.time}`)
-    console.log(values);
     resetForm();
   };
 
@@ -123,7 +122,6 @@ export const AppointmentForm = ({ name, avatar, closeModal }) => {
                 className="form-input form-input-time"
                 onClick={() => setIsSelectOpen(true)}
                 onChange={formik.handleChange}
-                // value={formik.values.time}
                 onBlur={formik.handleBlur}
               />
               {formik.touched.time && formik.errors.time && (
