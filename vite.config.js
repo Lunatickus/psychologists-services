@@ -5,5 +5,5 @@ import svgr from '@svgr/rollup';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), svgr()],
-  base: "/psychologists-services/",
+  base: import.meta.env.VITE_BASE_PATH || "/psychologists-services/",
 });
