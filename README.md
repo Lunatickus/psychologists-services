@@ -37,4 +37,4 @@
 [Посилання на репозиторій](https://github.com/Lunatickus/psychologists-services)
 
 ### Деплой
-[Посилання на веб-застосунок](#)
+[Посилання на веб-застосунок](https://lunatickus.github.io/psychologists-services/)
