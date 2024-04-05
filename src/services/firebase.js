@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBM58xCHiU9ld_fIMWuIfFZ5XtW-vizgTs",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "psychologists-services-34aff.firebaseapp.com",
   databaseURL:
     "https://psychologists-services-34aff-default-rtdb.europe-west1.firebasedatabase.app",
