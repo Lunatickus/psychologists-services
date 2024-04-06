@@ -12,6 +12,14 @@ export const Background = styled.div`
     var(--primary-white-color)
   );
 
+  @media screen and (min-width: 768px) {
+    background-image: radial-gradient(
+    circle 800px at bottom right,
+    rgba(52, 112, 255, 0.8),
+    var(--primary-white-color)
+  );
+  }
+
   .home-page-main {
     height: calc(100% - 100px);
     background-image: url(${BackgroundImage});

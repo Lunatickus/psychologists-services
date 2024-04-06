@@ -9,15 +9,19 @@ export const HeaderStyled = styled.header`
 
   .header-nav {
     width: 536px;
+    margin-bottom: 12px;
   }
 
-  @media screen and (min-width: 570px) {
+  @media screen and (min-width: 744px) {
     .header-nav {
       display: flex;
-      justify-content: space-between;
+      gap: 130px;
       align-items: center;
       max-width: 536px;
+      margin-bottom: 0;
     }
+
+    
   }
 
   @media screen and (min-width: 800px) {
@@ -32,6 +36,7 @@ export const HeaderStyled = styled.header`
   .header-nav-list {
     display: flex;
     gap: 40px;
+    /* margin-top: 12px; */
   }
 
   .header-nav-logo {
