@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
 export const ItemStyled = styled.li`
-  display: flex;
+  /* display: flex;
   gap: 24px;
-  align-items: flex-start;
+  align-items: flex-start; */
   padding: 24px;
-  width: 1184px;
+  max-width: 1184px;
   background-color: var(--white-color);
   border-radius: 24px;
+
+  @media screen and (min-width: 1184px) {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
 
   .avatar-wrapper {
     position: relative;
@@ -18,6 +24,18 @@ export const ItemStyled = styled.li`
     border-radius: 30px;
     width: 120px;
     height: 120px;
+  }
+
+  @media screen and (min-width: 510px) {
+    .item-head-content-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .item-head-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
   }
 
   .avatar {
@@ -31,14 +49,14 @@ export const ItemStyled = styled.li`
   }
 
   .item-content-wrapper {
-    width: 992px;
+    max-width: 992px;
     margin-bottom: 8px;
   }
 
-  .item-head-wrapper {
+  /* .item-head-wrapper {
     display: flex;
     justify-content: space-between;
-  }
+  } */
 
   .item-head-text {
     color: var(--gray-color);
@@ -48,10 +66,10 @@ export const ItemStyled = styled.li`
     letter-spacing: 0%;
   }
 
-  .item-head-content-wrapper {
+  /* .item-head-content-wrapper {
     display: flex;
     align-items: center;
-  }
+  } */
 
   .item-head-content-text {
     color: var(--primary-text-color);

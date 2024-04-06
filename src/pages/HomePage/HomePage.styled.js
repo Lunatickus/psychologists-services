@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BackgroundImage from "../../images/background.png";
+import BackgroundImage2x from "../../images/background@2x.png";
 import { Link } from "react-router-dom";
 
 export const Background = styled.div`
@@ -19,15 +20,33 @@ export const Background = styled.div`
     background-size: 526px auto;
   }
 
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .home-page-main {
+      background-image: url(${BackgroundImage2x});
+    }
+  }
+
   .home-page-section {
-    display: flex;
-    gap: 24px;
-    align-items: flex-end;
     padding-top: 126px;
   }
 
+  @media screen and (min-width: 970px) {
+    .home-page-section {
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+      padding-top: 126px;
+    }
+    .home-psychologists-wrapper {
+      margin-top: 0;
+    }
+  }
+
   .home-content-wrapper {
-    width: 595px;
+    max-width: 595px;
   }
 
   .home-title {
@@ -68,6 +87,8 @@ export const Background = styled.div`
     border-radius: 13px;
     background-color: var(--blue-color);
     margin-bottom: 35px;
+    max-width: 311px;
+    margin-top: 24px;
   }
 
   .checkbox-wrapper {

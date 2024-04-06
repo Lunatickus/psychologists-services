@@ -5,18 +5,28 @@ export const HeaderStyled = styled.header`
   padding-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(25, 26, 21, 0.1);
-
-  .header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  width: 100%;
 
   .header-nav {
-    display: flex;
-    gap: 130px;
-    align-items: center;
     width: 536px;
+  }
+
+  @media screen and (min-width: 570px) {
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 536px;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
   }
 
   .header-nav-list {
