@@ -20,8 +20,6 @@ export const HeaderStyled = styled.header`
       max-width: 536px;
       margin-bottom: 0;
     }
-
-    
   }
 
   @media screen and (min-width: 800px) {

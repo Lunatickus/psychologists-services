@@ -16,8 +16,8 @@ export const Background = styled.div`
     height: calc(100% - 100px);
     background-image: url(${BackgroundImage});
     background-repeat: no-repeat;
-    background-position: right 128px top 60px;
-    background-size: 526px auto;
+    background-position: right 10px top 60px;
+    background-size: 300px auto;
   }
 
   @media (min-device-pixel-ratio: 2),
@@ -50,12 +50,23 @@ export const Background = styled.div`
   }
 
   .home-title {
-    font-size: 80px;
+    font-size: 40px;
     font-weight: 600;
     line-height: 1.025;
     letter-spacing: -2%;
     color: var(--primary-text-color);
     margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: 425px) {
+    .home-title {
+      font-size: 80px;
+    }
+
+    .home-page-main {
+      background-position: right 128px top 60px;
+      background-size: 526px auto;
+    }
   }
 
   .home-title-text {

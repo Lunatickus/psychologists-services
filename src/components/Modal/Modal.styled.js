@@ -5,8 +5,8 @@ export const Backdrop = styled.div`
   top: 0;
   left: 0;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(25, 26, 21, 0.6);
   transition: 250ms linear;
 
@@ -14,13 +14,20 @@ export const Backdrop = styled.div`
     position: absolute;
     max-height: 580px;
     max-width: 566px;
+    min-width: 320px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 30px;
-    padding: 64px;
+    padding: 32px;
     overflow: auto;
     background-color: var(--white-color);
+  }
+
+  @media screen and (min-width: 768px) {
+    .modal {
+      padding: 64px;
+    }
   }
 
   .close-btn {
